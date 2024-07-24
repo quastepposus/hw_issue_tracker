@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Search
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-column align-items-center mt-2 container">
+        {% include 'partial/search.html' %}
+        {% for task in tasks %}
+            <div class="mt-2 d-flex flex-column align-items-center">
+                <a href="{% url 'task' task.pk %}">{{ task.summary }}</a>
+                <div><b>Status: </b> {{ task.status.title }}</div>
+                <div><b>Type: </b>{{ task.type.title }}</div>
+            </div>
+	    {% endfor %}
+        <br>
+        {% if is_paginated %}
+            {% include 'partial/paginate.html' %}
+        {% endif %}
+    </div>
+{% endblock %}

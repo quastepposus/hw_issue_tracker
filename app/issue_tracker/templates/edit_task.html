@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Task {% endblock %}
+
+{% block content %}
+	<div class="d-flex flex-column align-items-center container">
+        <h1>Create Task</h1>
+
+        <form class="d-flex flex-column align-items-center justify-content-between" action="{% url 'edit_task' task.pk %}" method="post">
+            {% include 'partial/form.html' with form=form button_text='Edit' %}
+        </form>
+    </div>
+{% endblock %}

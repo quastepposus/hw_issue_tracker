@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Create task in Project
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'create_project_task' project.pk %}" method="post" class="d-flex flex-column align-items-center">
+        {% include 'partial/form.html' with button_text='Create' %}
+        <input name="project" type="hidden" value="{{ project.pk }}">
+    </form>
+{% endblock %}

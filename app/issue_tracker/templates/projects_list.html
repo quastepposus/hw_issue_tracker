@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Projects
+{% endblock %}
+
+{% block content %}
+	<div class="d-flex flex-column align-items-center">
+        <h1>Projects: </h1>
+        {% for project in projects %}
+            <div class="d-flex flex-column align-items-center mt-2">
+                <a href="{% url 'project_detail' project.pk %}">{{ project.title }}</a>
+                <div class="mt-1">
+                    <div><b>Start Date:</b> {{ project.start_date }}</div>
+                    <div><b>End Date: </b>{{ project.end_date }}</div>
+                </div>
+            </div>
+        {% endfor %}
+        
+        {% include 'partial/paginate.html' %}
+    </div>
+{% endblock %}

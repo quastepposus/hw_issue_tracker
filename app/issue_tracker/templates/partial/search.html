@@ -1,0 +1,5 @@
+<form class="d-flex flex-column align-items-center container" action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Search">
+</form>

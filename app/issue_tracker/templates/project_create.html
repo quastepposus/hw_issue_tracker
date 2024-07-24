@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Create Project
+{% endblock %}
+
+{% block content %}
+    <form class="d-flex flex-column align-items-center" action="{% url 'project_create' %}" method="post">
+        {% include 'partial/project_form.html' %}
+    </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% csrf_token %}
+
+
+{% if task %}
+
+    <input class="mt-2" type="text" name="summary" value="{{ task.summary }}" required>
+    <label for="summary">{{ errors.summary }}</label>
+
+    <textarea class="mt-2"  name="description" cols="30" rows="10">{{ task.description }}</textarea>
+
+{% else %}
+
+    <input class="mt-2"  type="text" name="summary" placeholder="Summary" required>
+
+    <textarea class="mt-2"  name="description" cols="30" rows="10" placeholder="Description" ></textarea>
+
+{% endif %}
+
+<select class="mt-2"  name="status">
+    {% for status in statuses %}
+        <option value="{{ status.pk }}">{{ status.title }}</option>
+    {% endfor %}
+</select>
+
+<select class="mt-2"  name="type">
+    {% for type in types %}
+        <option value="{{ type.pk }}">{{ type.title }}</option>
+    {% endfor %}
+</select>
+
+<input class="mt-2"  type="submit" value="{{ button_text }}">

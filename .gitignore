@@ -1,0 +1,5 @@
+.idea
+venv
+app/db.sqlite3
+app/app/__pycache__
+app/issue_tracker/__pycache__

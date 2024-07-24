@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Project
+{% endblock %}
+
+{% block content %}
+	<div class="d-flex flex-column align-items-center">
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description }}</p>
+
+        <div><b>Start date: </b>{{ project.start_date }}</div>
+        <div><b>End date: </b>{{ project.end_date }}</div>
+
+        <a href="{% url 'create_project_task' project.pk %}" class="btn btn-primary" role="button">Create Task</a>
+
+
+        <div>
+            <h1>Project Tasks</h1>
+
+        {% for task in tasks %}
+            <div class="mt-3 d-flex flex-column align-items-center">
+                <a href="{% url 'task' task.pk %}">{{ task.summary }}</a>
+                <div><b>Status: </b> {{ task.status.title }}</div>
+                <div>
+                    <b>Type: </b>
+                    {% for type in task.types.all %}
+                    	<span>{{ type.title }}</span>
+                    {% endfor %}
+
+                </div>
+            </div>
+	    {% endfor %}
+        <br>
+        {% if is_paginated %}
+            {% include 'partial/paginate.html' %}
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}
